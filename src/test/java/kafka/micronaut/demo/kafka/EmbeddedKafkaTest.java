@@ -29,9 +29,9 @@ public class EmbeddedKafkaTest {
     @Test
     public void producesMessages() throws InterruptedException {
         Message aMessage = new Message(
-                UUID.fromString("dbcc8f78-a088-4b4e-a15d-86f263126e1e"),
-                "A modelled message"
-                );
+            UUID.fromString("38f2be50-d4f6-470d-8748-b7f6b133de70"),
+            "My first Kafka message"
+        );
 
         messageProducer.sendMessage(aMessage);
 
@@ -39,6 +39,6 @@ public class EmbeddedKafkaTest {
         Message bodyOfMessages = messageConsumer.getMessages().poll(4, TimeUnit.SECONDS);
 
         assert bodyOfMessages != null;
-        assertEquals(aMessage.content, bodyOfMessages.content);
+        assertEquals(aMessage.getContent(), bodyOfMessages.getContent());
     }
 }

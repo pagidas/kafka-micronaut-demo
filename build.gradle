@@ -30,6 +30,8 @@ dependencies {
     implementation("io.micronaut.kafka:micronaut-kafka")
     developmentOnly("io.micronaut:micronaut-runtime-osx:$micronautVersion")
     runtimeOnly("ch.qos.logback:logback-classic")
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
 
     // test
     testAnnotationProcessor(platform("io.micronaut:micronaut-bom:$micronautVersion"))
@@ -41,6 +43,8 @@ dependencies {
     testImplementation("org.apache.kafka:kafka-clients:2.5.0:test")
     testImplementation("org.apache.kafka:kafka_2.12:2.5.0")
     testImplementation("org.apache.kafka:kafka_2.12:2.5.0:test")
+    testCompileOnly 'org.projectlombok:lombok:1.18.12'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
 }
 
 test.classpath += configurations.developmentOnly

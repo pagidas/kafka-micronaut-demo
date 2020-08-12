@@ -1,22 +1,11 @@
 package kafka.micronaut.demo.model;
 
+import lombok.Data;
+
 import java.util.UUID;
 
+@Data
 public class Message {
-
-    public final String content;
-    public final UUID id;
-
-    public Message(UUID id, String content) {
-        this.content = content;
-        this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "Message{" +
-                "content='" + content + '\'' +
-                ", id=" + id +
-                '}';
-    }
+    private final UUID id;
+    private final String content;
 }
