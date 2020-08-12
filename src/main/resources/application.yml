@@ -4,3 +4,8 @@ micronaut:
 kafka:
   bootstrap:
     servers: localhost:9092
+  consumers:
+    default:
+      value:
+        key.deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+        value.deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
