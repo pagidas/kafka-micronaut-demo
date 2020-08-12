@@ -14,24 +14,12 @@ import java.util.concurrent.LinkedBlockingDeque;
 @KafkaListener(offsetReset = OffsetReset.EARLIEST)
 public class MessageConsumer {
 
-    private final BlockingQueue<String> rawMessages = new LinkedBlockingDeque<>();
-
     private final BlockingQueue<Message> messages = new LinkedBlockingDeque<>();
 
-    @Topic("messages")
-    public void receive(@Body String raw) {
-        System.out.println("Got Message - " + raw);
-        rawMessages.add(raw);
-    }
-
-    @Topic("messages")
+    @Topic("my-topic")
     public void receive(@Body Message message) {
-        System.out.println("Got Message - " + message.toString());
+        System.out.println("Got Message - " + message);
         messages.add(message);
-    }
-
-    public BlockingQueue<String> getRawMessages() {
-        return rawMessages;
     }
 
     public BlockingQueue<Message> getMessages() {

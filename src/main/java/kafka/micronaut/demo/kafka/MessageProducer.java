@@ -8,9 +8,7 @@ import kafka.micronaut.demo.model.Message;
 @KafkaClient
 public interface MessageProducer {
 
-    @Topic("messages")
-    void sendMessage(@Body String raw);
-
-    @Topic("messages")
+    @Topic("my-topic")
     void sendMessage(@Body Message message);
+
 }
