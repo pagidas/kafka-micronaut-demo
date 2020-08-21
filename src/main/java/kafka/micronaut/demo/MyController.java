@@ -8,7 +8,6 @@ import kafka.micronaut.demo.model.Message;
 
 import javax.inject.Inject;
 import javax.validation.constraints.NotBlank;
-import java.util.UUID;
 
 @Controller
 public class MyController {
@@ -22,6 +21,6 @@ public class MyController {
 
     @Get(value = "/send/{message}")
     public void sendMessage(@NotBlank @PathVariable String message) {
-        messageProducer.sendMessage(new Message(UUID.randomUUID(), message));
+        messageProducer.sendMessage(new Message(message));
     }
 }
