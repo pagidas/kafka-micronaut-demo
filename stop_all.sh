@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DIR=$PWD/kafka
+DIR=$PWD/docker-compose-kafka
 
 echo "Terminating all..."
 
