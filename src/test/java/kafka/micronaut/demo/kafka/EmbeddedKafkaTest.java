@@ -10,7 +10,6 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertSame;
 
 @MicronautTest(environments = "kafka")
 public class EmbeddedKafkaTest {
@@ -28,15 +27,15 @@ public class EmbeddedKafkaTest {
 
     @Test
     public void producesMessages() throws InterruptedException {
-        Message aMessage = new Message(
-            UUID.fromString("38f2be50-d4f6-470d-8748-b7f6b133de70"),
-            "My first Kafka message"
+        var aMessage = new Message(
+                UUID.fromString("38f2be50-d4f6-470d-8748-b7f6b133de70"),
+                "My first Kafka message"
         );
 
         messageProducer.sendMessage(aMessage);
 
         // Timeout in poll depends on local machine because this test spins up a Kafka in the JVM
-        Message bodyOfMessages = messageConsumer.getMessages().poll(4, TimeUnit.SECONDS);
+        var bodyOfMessages = messageConsumer.getMessages().poll(4, TimeUnit.SECONDS);
 
         assert bodyOfMessages != null;
         assertEquals(aMessage.getContent(), bodyOfMessages.getContent());
