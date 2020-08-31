@@ -5,11 +5,13 @@ import io.micronaut.configuration.kafka.annotation.OffsetReset;
 import io.micronaut.configuration.kafka.annotation.Topic;
 import io.micronaut.messaging.annotation.Body;
 import kafka.micronaut.demo.model.Message;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.inject.Singleton;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingDeque;
 
+@Slf4j
 @Singleton
 @KafkaListener(offsetReset = OffsetReset.EARLIEST)
 public class MessageConsumer {
@@ -18,7 +20,7 @@ public class MessageConsumer {
 
     @Topic("my-topic")
     public void receive(@Body Message message) {
-        System.out.println("Got Message - " + message);
+        log.debug("Got Message - " + message);
         messages.add(message);
     }
 

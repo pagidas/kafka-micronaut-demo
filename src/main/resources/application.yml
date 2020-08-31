@@ -1,6 +1,25 @@
+logger:
+  levels:
+    kafka.micronaut.demo: DEBUG
+
 micronaut:
+  server:
+    port: 8080
   application:
-    name: kafkaMicronautDemo
+    name: kafka-micronaut-demo
+
 kafka:
   bootstrap:
     servers: localhost:9092
+
+jackson:
+  deserialization:
+    failOnUnknownProperties: false
+
+poller:
+  initial-delay: 5s
+  fixed-delay: 5s
+  message: a message
+
+message-producer:
+  url: http://localhost:8080
